@@ -11,7 +11,7 @@ nnoremap <Leader>gs :Gina status<cr>
 " Open github url
 nnoremap <Leader>gh :Gina browse<cr>
 " Open git log( browser mode)
-nnoremap <Leader>gl :tabnew<cr>:Gina log --opener=vsplit<cr>
+nnoremap <Leader>gl :tabnew<cr>:Gina log --max-count=1000 --opener=vsplit <cr>
 " Open git blame windows
 nnoremap <Leader>gb :Gina blame :<cr>
 " show branch
