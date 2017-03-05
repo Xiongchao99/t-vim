@@ -16,7 +16,7 @@ nnoremap <Leader>gl :tabnew<cr>:Gina log --opener=vsplit<cr>
 nnoremap <Leader>gb :Gina blame :<cr>
 " show branch
 nnoremap <Leader>sb :Gina branch -a<cr>
-" git diff current file (vimdiff)
+" git diff current file
 nnoremap <Leader>gd :Gina compare :<cr>
 " list git issue
 nnoremap <Leader>gi :silent! Gissue<cr>
@@ -70,6 +70,11 @@ function s:gina_setting()
     call gina#custom#mapping#nmap(
                 \ 'status', 'D',
                 \ ':call gina#action#call(''patch'')<CR>',
+                \ {'noremap': 1, 'silent': 1},
+                \)
+    call gina#custom#mapping#nmap(
+                \ 'status', 'd',
+                \ ':call gina#action#call(''compare'')<CR>',
                 \ {'noremap': 1, 'silent': 1},
                 \)
     call gina#custom#mapping#nmap(
