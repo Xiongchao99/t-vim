@@ -19,7 +19,12 @@ function! te#git#get_cur_br_name() abort
     if exists('*gita#statusline#format')
         return gita#statusline#format('%lb')
     endif
-    return -1
+    let l:all_remote_name=systemlist('git branch')
+    if empty(l:all_remote_name) == 1
+        call te#utils#EchoWarning('No remote name found!')
+        return 1
+    endif
+    return matchstr(l:all_remote_name[0],'^* \zs.*')
 endfunction
 
 function! s:get_remote_name() abort
