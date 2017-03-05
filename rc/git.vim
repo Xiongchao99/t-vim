@@ -17,7 +17,7 @@ nnoremap <Leader>gb :Gina blame :<cr>
 " show branch
 nnoremap <Leader>sb :Gina branch -a<cr>
 " git diff current file (vimdiff)
-nnoremap <Leader>gd :Gina patch<cr>
+nnoremap <Leader>gd :Gina compare :<cr>
 " list git issue
 nnoremap <Leader>gi :silent! Gissue<cr>
 " create new github issue
