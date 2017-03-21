@@ -58,6 +58,7 @@ function! s:airline_setting()
     if g:colors_name ==# 'PaperColor'
         :AirlineTheme gruvbox
     endif
+    let g:airline_section_b='%{g:airline_symbols.branch." ".te#git#get_cur_br_name()}'
 endfunction
 
 call te#feat#register_vim_enter_setting(function('<SID>airline_setting'))
