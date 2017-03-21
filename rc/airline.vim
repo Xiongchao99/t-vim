@@ -55,6 +55,7 @@ let g:airline_symbols.crypt = '🔒'
 function! s:airline_setting()
     let g:airline_section_error = airline#section#create_right(['%{neomakemp#run_status()}'])
     let g:airline_section_warning='%{strftime("%m/%d\-%H:%M")}'
+    let g:airline_section_b='%{g:airline_symbols.branch." ".te#git#get_cur_br_name()}'
 endfunction
 
 autocmd misc_group VimEnter * call s:airline_setting()

@@ -13,18 +13,22 @@ endfunction
 " return a string which is the name of local branch name
 " return a space if no local branch found
 function! te#git#get_cur_br_name() abort
-    if exists('*fugitive#head')
-        return fugitive#head()
+    try 
+        let l:result=fugitive#head()
+    catch /^Vim\%((\a\+)\)\=:E117/
+        let l:result=''
+    endtry
+    if l:result !=# ''
+        return l:result
     endif
-    if exists('*gina#component#repo#branch')
-        return gina#component#repo#branch()
+    try 
+        let l:result=gina#component#repo#branch()
+    catch /^Vim\%((\a\+)\)\=:E117/
+        let l:result=''
+    endtry
+    if l:result !=# ''
+        return l:result
     endif
-    let l:all_remote_name=systemlist('git branch')
-    if empty(l:all_remote_name) == 1
-        call te#utils#EchoWarning('No remote name found!')
-        return 1
-    endif
-    return matchstr(l:all_remote_name[0],'^* \zs.*')
 endfunction
 
 function! s:get_remote_name() abort

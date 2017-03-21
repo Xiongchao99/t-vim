@@ -93,7 +93,7 @@ if !exists('g:feat_enable_airline') || g:feat_enable_airline != 1
         let l:mystatus_line='%<%t%m%r%h%w'
         let l:mystatus_line.="%{exists(':TagbarToggle')?\ tagbar#currenttag('[%s]','')\ :\ ''}"
         if a:type == 1
-            let l:mystatus_line.="%=[%{(&fenc!=''?&fenc:&enc)}\|%{&ff}\|%Y][%l,%v][%p%%]%{exists('*fugitive#statusline')?\ fugitive#statusline()\ :\ ''}"
+            let l:mystatus_line.="%=[%{(&fenc!=''?&fenc:&enc)}\|%{&ff}\|%Y][%l,%v][%p%%]%{strlen(te#git#get_cur_br_name())?\ '['.te#git#get_cur_br_name().']'\ :\ ''}"
             let l:mystatus_line.="[%{strftime(\"%m/%d\-\%H:%M\")}]"
         endif
         if exists('g:asyncrun_status') && g:asyncrun_status !=# ''
