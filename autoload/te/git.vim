@@ -16,8 +16,8 @@ function! te#git#get_cur_br_name() abort
     if exists('*fugitive#head')
         return fugitive#head()
     endif
-    if exists('*gita#statusline#format')
-        return gita#statusline#format('%lb')
+    if exists('*gina#component#repo#branch')
+        return gina#component#repo#branch()
     endif
     let l:all_remote_name=systemlist('git branch')
     if empty(l:all_remote_name) == 1

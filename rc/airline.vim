@@ -25,7 +25,6 @@ let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tagbar#flags = 'f'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#ycm#enabled = 1
-let g:airline_section_b=te#git#get_cur_br_name()
 
 let g:airline_theme='gruvbox'
 
