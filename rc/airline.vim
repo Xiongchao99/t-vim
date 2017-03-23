@@ -26,7 +26,7 @@ let g:airline#extensions#tagbar#flags = 'f'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#ycm#enabled = 1
 
-let g:airline_theme='gruvbox'
+"let g:airline_theme='gruvbox'
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
@@ -58,5 +58,5 @@ function! s:airline_setting()
     let g:airline_section_b='%{g:airline_symbols.branch." ".te#git#get_cur_br_name()}'
 endfunction
 
-autocmd misc_group VimEnter * call s:airline_setting()
+call te#feat#register_vim_enter_setting(function('<SID>airline_setting'))
 " }}}
