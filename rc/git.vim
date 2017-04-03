@@ -13,7 +13,7 @@ nnoremap <Leader>gh :Gina browse<cr>
 " Open git log( browser mode)
 nnoremap <Leader>gl :tabnew<cr>:Gina log --max-count=1000 --opener=vsplit <cr>
 " Open git blame windows
-nnoremap <Leader>gb :Gina blame :<cr>
+nnoremap <Leader>gb :Gina blame --use-author-instead :<cr>
 " show branch
 nnoremap <Leader>sb :Gina branch -a<cr>
 " git diff current file
