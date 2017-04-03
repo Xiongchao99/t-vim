@@ -93,5 +93,5 @@ function s:gina_setting()
 	      \)
 endfunction
 
-autocmd misc_group VimEnter * :call s:gina_setting()
+call te#feat#register_vim_enter_setting(function('<SID>gina_setting'))
 "}}}
