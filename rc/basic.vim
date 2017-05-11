@@ -30,6 +30,10 @@ if(!te#env#IsWindows())
     endif
 endif
 Plug 'ZSaberLv0/ZFVimFoldBlock'
+"fold text that match regex (tempplate)
+nnoremap <Leader>zb q::call ZF_FoldBlockTemplate()<cr>
+"fold text that match regex
+nnoremap <Leader>zf :ZFFoldBlock //<left>
 Plug 'Yggdroot/indentLine'
 let g:indentLine_fileTypeExclude = ['help', 'startify', 'vimfiler', 'markdown']
 let g:indentLine_concealcursor = 'niv'
