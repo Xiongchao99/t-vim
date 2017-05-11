@@ -29,6 +29,7 @@ if(!te#env#IsWindows())
         Plug 'CodeFalling/fcitx-vim-osx'
     endif
 endif
+Plug 'ZSaberLv0/ZFVimFoldBlock'
 Plug 'Yggdroot/indentLine'
 let g:indentLine_fileTypeExclude = ['help', 'startify', 'vimfiler', 'markdown']
 let g:indentLine_concealcursor = 'niv'
