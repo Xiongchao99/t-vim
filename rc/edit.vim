@@ -14,6 +14,11 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/vim-asterisk'
 Plug 'mbbill/undotree',  { 'on': 'UndotreeToggle'   }
 Plug 'tweekmonster/spellrotate.vim', {'on': ['<Plug>(SpellRotateForward)']}
+Plug 'ZSaberLv0/VimIM'
+Plug 'tracyone/VimIM_db'
+Plug 'ZSaberLv0/VimIMSync'
+let g:vimim_cloud = 'google,sogou,baidu,qq'  
+let g:vimim_map = 'tab_as_gi' 
 nmap <silent> <leader>zn <Plug>(SpellRotateForward)
 nmap <silent> <leader>zp <Plug>(SpellRotateBackward)
 vmap <silent> <leader>zn <Plug>(SpellRotateForwardV)
@@ -84,4 +89,30 @@ xmap gs <plug>XEasyClipPaste
 call te#meta#map('nmap ','p','<plug>EasyClipSwapPasteForward')
 call te#meta#map('nmap ','n','<plug>EasyClipSwapPasteBackwards')
 "}}}
+"
+let g:Vimim_map='no-gi'
+let g:Vimim_punctuation=0
+let g:Vimim_toggle='pinyin,baidu'
+let g:VimIMSync_repo_head='https://'
+let g:VimIMSync_repo_tail='github.com/tracyone/VimIM_db'
+let g:VimIMSync_user='tracyone'
+let g:VimIMSync_file='plugin/vimim.baidu.txt'
+command! -nargs=0 IMView execute 'edit '.g:t_vim_plugin_install_path.'VimIM_db/'.g:VimIMSync_file
+function! s:vimim_add_word()
+    let l:word=getline("'<")[getpos("'<")[2]-1:getpos("'>")[2]-1]
+    let l:pinyin=input("Please input pinyin for ".l:word.': ')
+    execute ':IMAdd '.l:word.' '.l:pinyin
+endfunction
+function! s:vimim_upload()
+    execute 'cd '.g:t_vim_plugin_install_path.'/VimIM_db'
+    let l:command='git fetch --all && git stash && git rebase origin/master && git stash pop && git add . && git commit -m "Upload ..." && git push origin master'
+    call te#utils#run_command(l:command)
+endfunction
+vnoremap <silent> ;; :call <SID>vimim_add_word()<cr>
+nnoremap <silent> <Leader>vu :call <SID>vimim_upload()<cr>
+
+"inoremap <silent> ;; <C-R>=g:Vimim_chinese()<CR>
+"nnoremap <silent> ;: i<C-R>=g:Vimim_onekey()<CR><Esc>l
+"inoremap <silent> ;: <C-R>=g:Vimim_onekey()<CR>
+
 " vim: set fdm=marker foldlevel=0 foldmarker& filetype=vim: 
